@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "packageManager": "pnpm@8.6.10",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.40.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.48.0",
+    "turbo": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
