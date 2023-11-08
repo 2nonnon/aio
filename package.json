@@ -10,8 +10,8 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.40.3",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.48.0",
-    "turbo": "latest"
+    "eslint": "^8.53.0",
+    "turbo": "^1.10.16"
   },
   "config": {
     "commitizen": {
