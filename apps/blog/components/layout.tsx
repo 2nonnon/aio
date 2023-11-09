@@ -25,7 +25,7 @@ export default function Layout({ children, dictionary, locale }: {
 
   const copies = dictionary.layout
 
-  const home = {
+  const home: IconLinkProps = {
     title: copies.logo,
     name: copies.logo,
     href: preUrl,

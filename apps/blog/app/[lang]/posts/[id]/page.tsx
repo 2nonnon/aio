@@ -5,12 +5,15 @@ import { getCopies } from '@/dictionaries'
 import { getAllPostIds, getPostData } from '@/lib/posts'
 import type { PageProps } from '@/types/global'
 import Date from '@/components/date'
-import { getI18nMetaData } from '@/helper/getI18nMetaData'
 
-export async function generateMetadata({ params: { lang } }: PageProps): Promise<Metadata> {
-  const i18nMeteData = await getI18nMetaData(lang, 'posts')
+export async function generateMetadata({ params: { id } }: PageProps): Promise<Metadata> {
+  const postData = await getPostData(id as string)
 
-  return i18nMeteData
+  return {
+    title: postData.title,
+    description: postData.title,
+    keywords: postData.tags?.replaceAll(' ', ','),
+  }
 }
 
 interface tagProps {
@@ -48,8 +51,8 @@ export default async function Page({ params: { lang, id } }: PageProps) {
           {
             (postData.last || postData.next)
             && <div className='flex items-center justify-between mb-4 gap-2'>
-              {postData.last ? <Link href={`/${lang}/${postData.last.id}`}>{`Last: ${postData.last.title}`}</Link> : <span></span>}
-              {postData.next ? <Link href={`${lang}/${postData.next.id}`}>{`Next: ${postData.next.title}`}</Link> : <span></span>}
+              {postData.last ? <Link href={{ pathname: `/${lang}/${postData.last.id}` }}>{`Last: ${postData.last.title}`}</Link> : <span></span>}
+              {postData.next ? <Link href={{ pathname: `/${lang}/${postData.next.id}` }}>{`Next: ${postData.next.title}`}</Link> : <span></span>}
             </div>
           }
         </nav>
@@ -58,7 +61,7 @@ export default async function Page({ params: { lang, id } }: PageProps) {
   )
 }
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams() {
   const defaultPaths = getAllPostIds()
 
   return defaultPaths.map(path => path.params)
