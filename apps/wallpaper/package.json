@@ -1,0 +1,37 @@
+{
+  "name": "@aio/wallpaper",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 7400",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.0",
+    "@react-three/drei": "^9.88.13",
+    "@react-three/fiber": "^8.15.10",
+    "negotiator": "^0.6.3",
+    "next": "^14.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "^0.158.0",
+    "unified": "^11.0.4"
+  },
+  "devDependencies": {
+    "@iconify-icon/react": "^1.0.8",
+    "@types/negotiator": "^0.6.3",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "autoprefixer": "^10.4.16",
+    "leva": "^0.9.35",
+    "postcss": "^8.4.31",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^12.0.1",
+    "r3f-perf": "^7.1.2",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  }
+}
