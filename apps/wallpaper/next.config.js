@@ -7,6 +7,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  transpilePackages: ['three'],
 }
 
 module.exports = nextConfig
