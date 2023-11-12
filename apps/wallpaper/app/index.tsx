@@ -1,16 +1,17 @@
 'use client'
 
 import { useFrame, useLoader } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, useHelper } from '@react-three/drei'
 import { forwardRef, useImperativeHandle, useRef } from 'react'
 import { Perf } from 'r3f-perf'
-import type { SkinnedMesh } from 'three'
+import type { DirectionalLight, SkinnedMesh } from 'three'
 import { MMDLoader } from 'three/examples/jsm/loaders/MMDLoader'
 import * as THREE from 'three'
 
 // import { EffectComposer } from '@react-three/postprocessing'
 // import { BlendFunction } from 'postprocessing'
-// import { useControls } from 'leva'
+import { useControls } from 'leva'
+
 // import Drunk from './Drunk'
 
 const Model = forwardRef<SkinnedMesh>((_, ref) => {
@@ -19,7 +20,7 @@ const Model = forwardRef<SkinnedMesh>((_, ref) => {
   console.log(result)
 
   result.castShadow = true
-  result.receiveShadow = true
+  // result.receiveShadow = true
   result.scale.set(0.1, 0.1, 0.1)
 
   useImperativeHandle(ref, () => {
@@ -39,11 +40,19 @@ export default function Experience() {
   //   amplitude: { value: 0.1, min: 0, max: 1 },
   // })
 
+  const directionalLightRef = useRef<DirectionalLight>(null)
+
+  useHelper((directionalLightRef as any), THREE.DirectionalLightHelper, 1, 'red')
+
+  const { sunPosition } = useControls('sky', {
+    sunPosition: { value: [1, 2, 3] },
+  })
+
   useFrame((state, _delta) => {
     if (modelRef.current) {
       const position = new THREE.Vector3()
       position.copy(modelRef.current.position)
-      position.y += 1
+      position.y += 2
       state.camera.lookAt(position)
     }
   })
@@ -65,6 +74,8 @@ export default function Experience() {
     </EffectComposer> */}
 
     <directionalLight
+      ref={directionalLightRef}
+      position={sunPosition}
       intensity={ 1.5 }
       castShadow
       shadow-mapSize={ [1024, 1024] }
@@ -79,9 +90,9 @@ export default function Experience() {
 
     <Model ref={modelRef}/>
 
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
+    <mesh scale={[10, 10, 1]} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
       <planeGeometry></planeGeometry>
-      <meshStandardMaterial color={'ivory'}></meshStandardMaterial>
+      <meshStandardMaterial color={'ivory'} transparent></meshStandardMaterial>
     </mesh>
   </>
 }
