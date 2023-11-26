@@ -111,61 +111,15 @@ importers:
       '@formatjs/intl-localematcher':
         specifier: ^0.5.0
         version: registry.npmmirror.com/@formatjs/intl-localematcher@0.5.0
-      negotiator:
-        specifier: ^0.6.3
-        version: registry.npmmirror.com/negotiator@0.6.3
-      next:
-        specifier: ^14.0.1
-        version: registry.npmmirror.com/next@14.0.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 18.2.0
-        version: registry.npmmirror.com/react@18.2.0
-      react-dom:
-        specifier: 18.2.0
-        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      unified:
-        specifier: ^11.0.4
-        version: registry.npmmirror.com/unified@11.0.4
-    devDependencies:
-      '@iconify-icon/react':
-        specifier: ^1.0.8
-        version: registry.npmmirror.com/@iconify-icon/react@1.0.8(react@18.2.0)
-      '@types/negotiator':
-        specifier: ^0.6.3
-        version: registry.npmmirror.com/@types/negotiator@0.6.3
-      '@types/node':
-        specifier: ^20.9.0
-        version: registry.npmmirror.com/@types/node@20.9.0
-      '@types/react':
-        specifier: ^18.2.37
-        version: registry.npmmirror.com/@types/react@18.2.37
-      '@types/react-dom':
-        specifier: ^18.2.15
-        version: registry.npmmirror.com/@types/react-dom@18.2.15
-      autoprefixer:
-        specifier: ^10.4.16
-        version: registry.npmmirror.com/autoprefixer@10.4.16(postcss@8.4.31)
-      postcss:
-        specifier: ^8.4.31
-        version: registry.npmmirror.com/postcss@8.4.31
-      postcss-import:
-        specifier: ^15.1.0
-        version: registry.npmmirror.com/postcss-import@15.1.0(postcss@8.4.31)
-      postcss-nesting:
-        specifier: ^12.0.1
-        version: registry.npmmirror.com/postcss-nesting@12.0.1(postcss@8.4.31)
-      tailwindcss:
-        specifier: ^3.3.5
-        version: registry.npmmirror.com/tailwindcss@3.3.5
-      typescript:
-        specifier: ^5.2.2
-        version: registry.npmmirror.com/typescript@5.2.2
-
-  apps/image:
-    dependencies:
-      '@formatjs/intl-localematcher':
-        specifier: ^0.5.0
-        version: registry.npmmirror.com/@formatjs/intl-localematcher@0.5.0
+      '@non/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@non/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@non/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       negotiator:
         specifier: ^0.6.3
         version: registry.npmmirror.com/negotiator@0.6.3
@@ -425,6 +379,25 @@ importers:
       typescript:
         specifier: ^4.9.3
         version: registry.npmmirror.com/typescript@4.9.5
+
+  packages/hooks: {}
+
+  packages/ui:
+    devDependencies:
+      '@iconify-icon/react':
+        specifier: ^1.0.8
+        version: registry.npmmirror.com/@iconify-icon/react@1.0.8(react@18.2.0)
+      '@types/react':
+        specifier: ^18.2.37
+        version: registry.npmmirror.com/@types/react@18.2.37
+      react:
+        specifier: 18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      tailwindcss:
+        specifier: ^3.3.5
+        version: registry.npmmirror.com/tailwindcss@3.3.5
+
+  packages/utils: {}
 
 packages:
 
@@ -6142,7 +6115,7 @@ packages:
       react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
 
   registry.npmmirror.com/react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react/-/react-18.2.0.tgz}
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==, tarball: https://registry.npmmirror.com/react/-/react-18.2.0.tgz}
     name: react
     version: 18.2.0
     engines: {node: '>=0.10.0'}
