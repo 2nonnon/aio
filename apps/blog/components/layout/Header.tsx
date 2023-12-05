@@ -1,14 +1,12 @@
 import React from 'react'
 
-import ScrollTop from './ScrollTop'
-import DayAndNight from './DayAndNight'
-import ToggleLocale from './toggleLocale'
-import type { IconLinkProps } from './IconLink'
-import IconLink from './IconLink'
+import DayAndNight from '@/components/DayAndNight'
+import ToggleLocale from '@/components/toggleLocale'
+import type { IconLinkProps } from '@/components/IconLink'
+import IconLink from '@/components/IconLink'
 import type { Dictionary, LocaleType } from '@/dictionaries'
 
-export default function Layout({ children, dictionary, locale }: {
-  children: React.ReactNode
+export default function Header({ dictionary, locale }: {
   dictionary: Dictionary
   locale: LocaleType
 }) {
@@ -56,10 +54,6 @@ export default function Layout({ children, dictionary, locale }: {
           <DayAndNight></DayAndNight>
         </nav>
       </header>
-      <main className='px-6 max-w-screen-xl box-border w-full mx-auto overflow-hidden flex-1 flex flex-col'>
-        {children}
-      </main>
-      <ScrollTop content={copies.toTop}></ScrollTop>
     </>
   )
 }
