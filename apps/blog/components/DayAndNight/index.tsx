@@ -2,16 +2,16 @@
 
 import { useCallback } from 'react'
 import $style from './index.module.css'
-import { Theme, useTheme } from '@/hooks/useTheme'
+import { useTheme } from '@/components/providers/ThemeProvider'
 
 export default function dayAndNight() {
-  const [theme, setTheme] = useTheme(Theme.LIGTH)
+  const { theme, setTheme } = useTheme()
 
-  const isLight = theme === Theme.LIGTH
+  const isLight = theme === 'light'
 
   const TOGGLE = useCallback(() => {
     setTheme((pre) => {
-      return pre === Theme.LIGTH ? Theme.DARK : Theme.LIGTH
+      return pre === 'light' ? 'dark' : 'light'
     })
   }, [setTheme])
 
