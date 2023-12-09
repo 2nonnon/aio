@@ -1,23 +1,35 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useLayoutEffect, useRef } from 'react'
 import $style from './index.module.css'
 import { useTheme } from '@/components/providers/ThemeProvider'
 
 export default function dayAndNight() {
+  const btn = useRef<HTMLButtonElement>(null)
+
   const { theme, setTheme } = useTheme()
 
-  const isLight = theme === 'light'
+  useLayoutEffect(() => {
+    if (btn.current) {
+      btn.current.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false')
+    }
+  }, [btn.current])
 
   const TOGGLE = useCallback(() => {
     setTheme((pre) => {
-      return pre === 'light' ? 'dark' : 'light'
+      const next = pre === 'light' ? 'dark' : 'light'
+
+      if (btn.current) {
+        btn.current.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false')
+      }
+
+      return next
     })
   }, [setTheme])
 
   return (
     <>
-      <button onClick={TOGGLE} className={$style.toggle} aria-pressed={!isLight} title="Toggle Dark Mode">
+      <button ref={btn} onClick={TOGGLE} className={$style.toggle} aria-pressed='false' title="Toggle Dark Mode">
         <span className={$style.toggle__content}>
           <svg aria-hidden={true} className={$style.toggle__backdrop} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 290 228">
             <g className={$style.clouds}>

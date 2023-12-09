@@ -1,7 +1,8 @@
 'use client'
 
-import type { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import React from 'react'
+import useUpdateEffect from '@/hooks/useUpdateEffect'
 
 export type ThemeType = 'light' | 'dark' | 'system'
 
@@ -25,27 +26,9 @@ function getDefaultTheme(defaultTheme: ThemeType | undefined) {
 export function ThemeProvider({ children, defaultTheme }: PropsWithChildren<{ defaultTheme?: ThemeType }>) {
   const [theme, setTheme] = React.useState<ThemeType>(getDefaultTheme(defaultTheme))
 
-  // if (typeof window !== 'undefined') {
-  //   React.useLayoutEffect(() => {
-  //     if (localStorage.getItem(StorageKey.THEME))
-  //       setTheme(localStorage.getItem(StorageKey.THEME) as ThemeType)
-  //     else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-  //       setTheme('dark')
-  //   }, [])
-  // }
-
-  React.useEffect(() => {
+  useUpdateEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem(StorageKey.THEME, theme)
-    console.log(theme)
-
-    // fetch('/api/theme', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ theme }),
-    // })
   }, [theme])
 
   return (

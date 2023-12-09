@@ -29,22 +29,11 @@ export default async function RootLayout({
   params: IParams
 }) {
   const dictionary = await getDictionary(params.lang)
-  // const theme = cookies().get('theme') as ThemeType | undefined
 
   return (
     <html lang={params.lang} data-theme='light'>
       <head>
-        <Script>
-          {
-            `;(function () {
-              const prefersDark = window.matchMedia
-              && window.matchMedia('(prefers-color-scheme: dark)').matches
-              const setting = localStorage.getItem('THEME') || 'auto'
-              if (setting === 'dark' || (prefersDark && setting !== 'light'))
-                document.documentElement.setAttribute('data-theme', 'dark')
-              })()`
-          }
-        </Script>
+        <script dangerouslySetInnerHTML={{ __html: `;(function () { const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; const setting = localStorage.getItem('THEME') || 'auto'; if (setting === 'dark' || (prefersDark && setting !== 'light')) document.documentElement.setAttribute('data-theme', 'dark'); })()`}}></script>
       </head>
       <body className={`min-h-screen text-[var(--text2)] -z-20 flex flex-col ${inter.variable} font-sans`}>
         <ThemeProvider>
