@@ -1,8 +1,5 @@
 import { Inter } from 'next/font/google'
 
-// import { cookies } from 'next/headers'
-// import type { ThemeType } from '@/components/providers/ThemeProvider'
-import Script from 'next/script'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { getDictionary } from '@/dictionaries'
 import { i18n } from '@/i18n-config'
@@ -11,6 +8,7 @@ import type { IParams } from '@/types/global'
 import Header from '@/components/layout/Header'
 import Main from '@/components/layout/Main'
 import { I18nProvider } from '@/components/providers/I18nProvider'
+import ScrollTop from '@/components/ScrollTop'
 
 export async function generateStaticParams() {
   return i18n.locales.map(locale => ({ lang: locale }))
@@ -42,6 +40,7 @@ export default async function RootLayout({
             <Main>
               {children}
             </Main>
+            <ScrollTop content={dictionary.layout.toTop}></ScrollTop>
           </I18nProvider>
         </ThemeProvider>
       </body>

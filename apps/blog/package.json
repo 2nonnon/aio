@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.2",
+    "@non/hooks": "workspace:*",
+    "@non/ui": "workspace:*",
+    "@non/utils": "workspace:*",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "negotiator": "^0.6.3",

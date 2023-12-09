@@ -76,6 +76,7 @@
 .article pre {
     overflow: auto;
     margin: 1.25rem 0;
+    padding: 1rem;
     border-radius: .6rem;
 
     border: var(--border);
@@ -101,7 +102,7 @@
 }
 
 
-.article code {
+.article p code {
     border: var(--border);
     background-color: var(--surface3);
     border-radius: .25rem;

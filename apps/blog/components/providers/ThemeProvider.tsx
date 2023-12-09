@@ -1,7 +1,8 @@
 'use client'
 
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import React from 'react'
+
 import useUpdateEffect from '@/hooks/useUpdateEffect'
 
 export type ThemeType = 'light' | 'dark' | 'system'

@@ -5,6 +5,7 @@ import { getCopies } from '@/dictionaries'
 import { getAllPostIds, getPostData } from '@/lib/posts'
 import type { PageProps } from '@/types/global'
 import Date from '@/components/date'
+import ScrollTop from '@/components/ScrollTop'
 
 export async function generateMetadata({ params: { id } }: PageProps): Promise<Metadata> {
   const postData = await getPostData(id as string)
