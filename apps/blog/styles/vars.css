@@ -57,7 +57,7 @@
     --surface4: var(--surface4-light);
 }
 
-:root[theme='dark'] {
+:root[data-theme='dark'] {
     color-scheme: dark;
 
     --brand: var(--brand-dark);

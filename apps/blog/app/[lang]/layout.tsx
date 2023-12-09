@@ -1,4 +1,8 @@
 import { Inter } from 'next/font/google'
+
+// import { cookies } from 'next/headers'
+// import type { ThemeType } from '@/components/providers/ThemeProvider'
+import Script from 'next/script'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { getDictionary } from '@/dictionaries'
 import { i18n } from '@/i18n-config'
@@ -25,8 +29,23 @@ export default async function RootLayout({
   params: IParams
 }) {
   const dictionary = await getDictionary(params.lang)
+  // const theme = cookies().get('theme') as ThemeType | undefined
+
   return (
-    <html lang={params.lang}>
+    <html lang={params.lang} data-theme='light'>
+      <head>
+        <Script>
+          {
+            `;(function () {
+              const prefersDark = window.matchMedia
+              && window.matchMedia('(prefers-color-scheme: dark)').matches
+              const setting = localStorage.getItem('THEME') || 'auto'
+              if (setting === 'dark' || (prefersDark && setting !== 'light'))
+                document.documentElement.setAttribute('data-theme', 'dark')
+              })()`
+          }
+        </Script>
+      </head>
       <body className={`min-h-screen text-[var(--text2)] -z-20 flex flex-col ${inter.variable} font-sans`}>
         <ThemeProvider>
           <I18nProvider locale={params.lang} copies={dictionary}>
