@@ -10,18 +10,16 @@ export default function dayAndNight() {
   const { theme, setTheme } = useTheme()
 
   useLayoutEffect(() => {
-    if (btn.current) {
+    if (btn.current)
       btn.current.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false')
-    }
   }, [btn.current])
 
   const TOGGLE = useCallback(() => {
     setTheme((pre) => {
       const next = pre === 'light' ? 'dark' : 'light'
 
-      if (btn.current) {
+      if (btn.current)
         btn.current.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false')
-      }
 
       return next
     })
